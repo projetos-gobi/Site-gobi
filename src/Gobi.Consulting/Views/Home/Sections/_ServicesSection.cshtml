@@ -1,0 +1,83 @@
+﻿@{
+    var services = new List<dynamic>
+    {
+        new
+        {
+            Image = "/images/service-01.png",
+            Title = "Inovação. Novas Ideias. <br/> Novos Negócios.",
+            Description = "A transformação do seu negócio necessariamente parte da sua <strong>estratégia.</strong>",
+            Topics = new []
+            {
+                "Conceituação e desenho de produtos e serviços;",
+                "Modelos de negócios e estratégias go-to-market;",
+                "Planos para transformação digital;",
+                "Modelos operacionais e visão de futuro."
+            }
+        },
+        new
+        {
+            Image = "/images/service-02.png",
+            Title = "Diagnósticos. Otimização e <br/> Eficiência.",
+            Description = "Garantir a melhor solução aos desafios com resultados <strong>simples e rápidos.</strong>",
+            Topics = new []
+            {
+                "Diagnóstico da transformação digital;",
+                "Otimização de processos;",
+                "Roadmap e planejamento para implementação;",
+                "Gestão de programas e projetos."
+            }
+        },
+        new
+        {
+            Image = "/images/service-03.png",
+            Title = "Soluções Digitais. <br/> Mobilidade.",
+            Description = "Metodologias ágeis e entregas contínuas em <strong>plataformas e linguagens diversas.</strong>",
+            Topics = new []
+            {
+                "Soluções customizadas (Web e Apps);",
+                "Desenvolvimento nas principais linguagens de programação;",
+                "RPA - Robotic Process Automation."
+            }
+        }
+    };
+}
+
+<div class="gradient-top"></div>
+<section class="services-section">
+    
+    <h3 class="title">Serviços</h3>
+    
+	<div class="container">
+		<div class="row">
+			
+            @foreach (var service in services)
+            {
+                <div class="col-lg-4">
+
+                    <div class="services-card">
+
+                        <div class="services-card-image">
+                            <img src="@service.Image" alt="Gobi Vision" />
+
+                        </div>
+
+                        <h3>@Html.Raw(service.Title)</h3>
+
+                        <p>@Html.Raw(service.Description)</p>
+
+                        <ul>
+                            @foreach (var topic in service.Topics)
+                            {
+                                <li>• @topic</li>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+	</div>
+
+</section>
+<div class="gradient-bottom"></div>

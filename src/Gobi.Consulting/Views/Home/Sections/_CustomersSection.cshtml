@@ -1,0 +1,51 @@
+﻿@{
+	var customersTop = new []
+		{
+			"alvean.png",
+			"ambipar.png",
+			"copersucar.png",
+			"evolua-etanol.png",
+			"ftd_educacao.png",
+			"futebol-social.png",
+			"ggn.png",
+			"group-90.png"
+	};
+
+	var customersBottom = new []
+		{
+			"instituto-votorantim.png",
+			"itau.png",
+			"nortene.png",
+			"nubank.png",
+			"pedra-agroindustrial.png",
+			"quebrando-barreiras.png",
+			"solima.png",
+			"taboa-horizontal.png"
+	};
+}
+
+<div class="gradient"></div>
+<section class="section-customers section-customers--gradient">
+
+	<ul class="marquee marquee--top">
+		@foreach (var item in customersTop)
+		{
+			<li>
+				<img src="~/images/logo-parceiros/@item" alt="Image" />
+			</li>
+		}
+	</ul>
+</section>
+
+<section class="section-customers">
+
+	<ul class="marquee marquee--bottom">
+		@foreach (var item in customersBottom)
+		{
+			<li>
+				<img src="~/images/logo-parceiros/@item" alt="Image" />
+			</li>
+		}
+	</ul>
+
+</section>

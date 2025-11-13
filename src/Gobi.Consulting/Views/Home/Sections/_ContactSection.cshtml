@@ -1,0 +1,101 @@
+﻿@model FormContactRequest
+
+<section class="contact-section" id="contact-section">
+
+    <h3 class="title">Qual seu desafio?</h3>
+    <p>Nos contate.</p>
+
+    <form asp-controller="Contact" asp-action="Send"
+          method="post" class="container mt-5" id="form">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-lg-12 mb-3">
+                <label asp-for="Name" class="form-label">Nome completo <span class="text-danger">*</span></label>
+                <input asp-for="Name" type="text" class="form-control" placeholder="Nome completo">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="col-lg-12 mb-3">
+                <label asp-for="Email" class="form-label">Email corporativo <span class="text-danger">*</span></label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="E-mail">
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="col-lg-12 mb-3">
+                <label asp-for="Phone" class="form-label">Celular</label>
+                <input asp-for="Phone" type="text" class="form-control mask-phone" placeholder="(00) 00000-0000">
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div class="col-lg-12 mb-3">
+                <label asp-for="CompanyName" class="form-label">Empresa <span class="text-danger">*</span></label>
+                <input asp-for="CompanyName" type="text" class="form-control" placeholder="Nome Fantasia da Empresa">
+                <span asp-validation-for="CompanyName"></span>
+            </div>
+            <div class="col-lg-12 mb-3">
+                <label asp-for="CompanySize" class="form-label">Tamanho da Empresa</label>
+                <select asp-for="CompanySize" class="form-control" asp-items="FormContactRequest.CompanySizeSelectListItems">
+                    <option value="">Quantidade de funcionários</option>
+                </select>
+            </div>
+            <div class="col-lg-12 mb-3">
+                <label asp-for="Subject" class="form-label">Assunto</label>
+                <textarea asp-for="Subject" class="form-control" placeholder="Qual seu desafio?"></textarea>
+            </div>
+
+            <div class="col-lg-12 mb-3">
+                <canvas id="canvas" width="300"></canvas>
+                <input name="code" class="form-control" placeholder="Digite o código acima" />
+            </div>
+
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-lg-12">
+
+                <button id="valid" type="submit" class="btn btn-info btn-lg">
+                    Enviar
+                </button>
+
+                <div class="form-check mt-2">
+                    <input asp-for="PrivacyPolicy" class="form-check-input bg-secondary" type="checkbox" id="PrivacyPolicy">
+                    <label class="form-check-label" for="PrivacyPolicy">
+                        Eu concordo com os termos da <a href="#" data-bs-toggle="modal" data-bs-target="#modal-privacy">Política de Privacidade</a>.
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input asp-for="AllowsContact" class="form-check-input bg-secondary" type="checkbox" id="AllowsContact">
+                    <label class="form-check-label" for="AllowsContact">
+                        Permito que entrem em contato, caso necessário.
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-privacy" tabindex="-1" aria-labelledby="modal-privacy" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">
+                    Termos de Uso e Privacidade
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modal-termos">
+                <partial name="Sections/_Privacy" />
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        data-bs-dismiss="modal" 
+                        aria-label="Close"
+                        class="btn btn-secondary" 
+                        id="btn-acordo">
+                    Estou de acordo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
